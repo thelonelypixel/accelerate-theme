@@ -204,6 +204,10 @@
 			left: 0;
 			display: block;
 			object-fit: cover;
+
+			&.placeholder-image {
+				object-fit: contain;
+			}
 		}
 	}
 
@@ -279,6 +283,10 @@
 				top: unset;
 				left: unset;
 				display: block;
+
+				&.placeholder-image {
+					object-fit: contain;
+				}
 			}
 		}
 
@@ -373,7 +381,7 @@
 				}
 
 				h1 {
-					margin-bottom: 0;
+					margin-bottom: 2rem;
 					font-size: 3.2rem;
 					line-height: 4rem;
 					color: $primary-blue;
@@ -703,6 +711,10 @@
 				display: block;
 				object-fit: cover;
 				border-radius: 50%;
+
+				&.placeholder-image {
+					object-fit: contain;
+				}
 			}
 		}
 

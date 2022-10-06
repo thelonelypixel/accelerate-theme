@@ -68,9 +68,6 @@
                                     {% if page.date != nil %}
                                         <p>{{ page.date | date: '%d %B %Y' }}</p>
                                     {% endif %}
-                                    {% if page.link != nil %}
-                                        <a href="{{ page.link }}" rel="noreferrer" target="_blank" class="button">Read More</a>
-                                    {% endif %}
                                 </div>
 
                                 <div class="post-single__header-socials column-m-12-nest column-t-2">
@@ -102,7 +99,7 @@
                             </div>
                         </header>
 
-                        <body class="post-single__body">
+                        <div class="post-single__body">
                             <div class="row row--justified">
                                 <div class="column-m-12-nest column-d-1"></div>
                                 <div class="column-m-12-nest column-t-10 column-d-8">
@@ -111,7 +108,7 @@
                                 <div class="column-m-12-nest column-t-2"></div>
                                 <div class="column-m-12-nest column-d-1"></div>
                             </div>
-                        </body>
+                        </div>
                     </article>
                 </div>
             </section>
@@ -125,41 +122,43 @@
                         {% assign post_counter = 1 %}
                         {% assign primary_category = page.category[0] %}
 
-                        {% for item in site.news %}
+                        {% for item in site.news reversed %}
                             {% if item.url != page.url %}
                                 {% if item.category[0] == primary_category or item.category[1] == primary_category %}
+                                    {% if item.link != nil %}
+                                    <a class="post__post" href="{{ item.link }}" rel="noreferrer" target="_blank">
+                                    {% else %}
                                     <a class="post__post" href="{{ item.url }}">
+                                    {% endif %}
                                         <div class="post__post-thumbnail">
                                             {% if post.image != nil %}
                                                 <img src="{{ post.image }}">
                                             {% else %}
-                                                <img src="{{site.baseurl}}/assets/images/placeholder.jpg">
-                                                {% endif; %}
-                                            </div>
-                                            <div class="post__post-content">
-                                                <h4>{{ item.category | replace: "-", " " | replace: "[", "" | replace: "]", "" | replace: '"', "" }}</h4>
-                                                <h3>{{ item.title}}</h3>
-                                                <p class="date">{{ item.date | date: "%-d %B %Y" }}</p>
-                                                <span class="button">Read More</span>
-                                            </div>
-                                        </a>
+                                                <img class="placeholder-image" src="{{site.baseurl}}/assets/images/placeholder.png">
+                                            {% endif; %}
+                                        </div>
+                                        <div class="post__post-content">
+                                            <h4>{{ item.category | replace: "-", " " | replace: "[", "" | replace: "]", "" | replace: '"', "" }}</h4>
+                                            <h3>{{ item.title}}</h3>
+                                            <p class="date">{{ item.date | date: "%-d %B %Y" }}</p>
+                                            <span class="button">Read More</span>
+                                        </div>
+                                    </a>
 
-                                        {% assign post_counter = post_counter | plus: 1 %}
-                                        {% if post_counter == 5 %}
-                                            {% assign post_counter = 1 %}
-                                            {% break %}
-                                        {% endif %}
-
-                                        {% endif%}
+                                    {% assign post_counter = post_counter | plus: 1 %}
+                                    {% if post_counter == 5 %}
+                                        {% assign post_counter = 1 %}
+                                        {% break %}
                                     {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </section>
-                </main>
-                {% include site-footer.html %}
-                <script type="text/javascript" src="{{site.baseurl}}/assets/js/main.js"></script>
-            </body>
-        </html</body>
+                                {% endif%}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {% include site-footer.html %}
+        <script type="text/javascript" src="{{site.baseurl}}/assets/js/main.js"></script>
     </body>
-</html>>
+</html>

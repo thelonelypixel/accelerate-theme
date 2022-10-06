@@ -71,19 +71,34 @@ title: About Us
 
         <div class="team__grid" data-team-content="main">
             {% for item in site.team %}
-                {% if item.group == "main" %}
+                {% if item.team == "main" %}
                     <a href="{{ item.url }}" class="team__member">
                         <div class="team__member-image">
-                            {% assign team_image = item.image %}
-                            {% if team_image.size >= 1 %}
-                                <img src="{{ team_image }}" alt="Image of {{item.title}}">
+                            {% assign person_image = item.image %}
+                            {% assign person_name = item.name %}
+                            {% assign person_prefix = item.prefix %}
+                            {% assign person_suffix = item.suffix %}
+                            {% assign person_institution = item.institution %}
+                            {% assign person_position = item.position %}
+
+                            {% if person_image.size >= 1 %}
+                                <img src="{{ person_image }}" alt="Image of {{ person_name }}">
                             {% else %}
-                                <img src="{{site.baseurl}}/assets/images/placeholder.jpg">
+                                <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
                             {% endif %}
                         </div>
                         <div class="team__member-details">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.description }}</p>
+                            <h3>
+                                {{ person_prefix }}
+                                {{ person_name }}
+                                {{ person_suffix }}
+                            </h3>
+                            {% if person_institution.size >= 1 %}
+                                <p>{{ person_institution }}</p>
+                            {% endif %}
+                            {% if person_position.size >= 1 %}
+                                <p>{{ person_position }}</p>
+                            {% endif %}
                             <span class="button">Read Bio</span>
                         </div>
                     </a>
@@ -93,19 +108,28 @@ title: About Us
 
         <div class="team__grid inactive" data-team-content="advisory-group">
             {% for item in site.team %}
-                {% if item.group == "advisory-group" %}
+                {% if item.team == "advisory-group" %}
                     <a href="{{ item.url }}" class="team__member">
                         <div class="team__member-image">
-                            {% assign team_image = item.image %}
-                            {% if team_image.size >= 1 %}
-                                <img src="{{ team_image }}" alt="Image of {{item.title}}">
+                            {% assign person_image = item.image %}
+                            {% assign person_name = item.name %}
+                            {% assign person_institution = item.institution %}
+                            {% assign person_position = item.position %}
+
+                            {% if person_image.size >= 1 %}
+                                <img src="{{ person_image }}" alt="Image of {{ person_name }}">
                             {% else %}
-                                <img src="{{site.url}}/assets/images/placeholder.jpg">
+                                <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
                             {% endif %}
                         </div>
                         <div class="team__member-details">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.description }}</p>
+                            <h3>{{ person_name }}</h3>
+                            {% if person_institution.size >= 1 %}
+                                <p>{{ person_institution }}</p>
+                            {% endif %}
+                            {% if person_position.size >= 1 %}
+                                <p>{{ person_position }}</p>
+                            {% endif %}
                             <span class="button">Read Bio</span>
                         </div>
                     </a>
@@ -115,14 +139,14 @@ title: About Us
 
         <div class="team__grid inactive" data-team-content="alumni">
             {% for item in site.team %}
-                {% if item.group == "alumni" %}
+                {% if item.team == "alumni" %}
                     <a href="{{ item.url }}" class="team__member">
                         <div class="team__member-image">
                             {% assign team_image = item.image %}
                             {% if team_image.size >= 1 %}
                                 <img src="{{ team_image }}" alt="Image of {{item.title}}">
                             {% else %}
-                                <img src="{{site.url}}/assets/images/placeholder.jpg">
+                                <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
                             {% endif %}
                         </div>
                         <div class="team__member-details">
