@@ -139,9 +139,18 @@ title: Software Engineering
                     {% for item in site.resources %}
                         {% if item.slug == resource_slug %}
                             {% if item.link != nil %}
+                                <a class="resources__resource resources__resource--{{ item.category }}" data-resources-value="{{ item.category }}" href="{{ item.link }}" rel="noreferrer" target="_blank">
+                                    <div>
+                                        <h3>{{ item.title }}</h3>
+                                        {{ item.excerpt | markdownify }}
+                                    </div>
+                                    <span class="button">Read More</span>
+                                </a>
+                            {% else %}
                                 <a class="resources__resource resources__resource--{{ item.category }}" data-resources-value="{{ item.category }}" href="{{ item.url }}">
                                     <div>
                                         <h3>{{ item.title }}</h3>
+                                        {{ item.excerpt | markdownify }}
                                     </div>
                                     <span class="button">Read More</span>
                                 </a>
