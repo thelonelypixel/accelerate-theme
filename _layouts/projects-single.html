@@ -64,48 +64,116 @@
             </div>
         </section>
 
-        {% if page.people != nil %}
-        <section class="block block__related-people">
+
+
+
+
+
+
+
+
+        {% if page.authors.internal_authors != nil or page.authors.external_authors != nil or page.authors.consortium_authors != nil %}
+        <section class="block block__team">
             <div class="container">
                 <h2 class="section-heading">Related People</h2>
-                <div class="team__grid">
-                    {% for item in page.people %}
-                        {% assign people_slug = item | downcase | replace: " ", "-" | replace: "[", "" | replace: "]", "" | replace: '"', "" | replace: '.', "" %}
+                <div class="team__tabs">
+                    {% if page.authors.internal_authors != nil %}
+                        <button class="active" data-team-id="internal-authors">Internal</button>
+                    {% endif %}
+
+                    {% if page.authors.external_authors != nil %}
+                        <button {% if page.authors.internal_authors == nil %} class="active" {% endif %} data-team-id="external-authors">External</button>
+                    {% endif %}
+
+                    {% if page.authors.consortium_authors != nil %}
+                        <button {% if page.authors.internal_authors == nil and page.authors.external_authors == nil %} class="active" {% endif %} data-team-id="consortium-authors">Consortium</button>
+                    {% endif %}
+                </div>
+
+                {% if page.authors.internal_authors != nil %}
+                <div class="team__grid" data-team-content="internal-authors">
+                    {% for author in page.authors.internal_authors %}
+                        {% assign authorName = author %}
 
                         {% for item in site.team %}
-                            {% assign item_slug = item.title | downcase | replace: " ", "-" | replace: "[", "" | replace: "]", "" | replace: '"', "" | replace: '.', "" %}
-                            {% if item_slug == people_slug %}
+                            {% if item.slug == authorName %}
                                 {% assign person_image = item.image %}
                                 {% assign person_name = item.name %}
                                 {% assign person_institution = item.institution %}
                                 {% assign person_position = item.position %}
 
-                                <div class="team__member">
+                                <a href="{{ item.url }}" class="team__member">
                                     <div class="team__member-image">
                                         {% if person_image.size >= 1 %}
-                                        <img src="{{ person_image }}" alt="Image of {{ person_name }}">
+                                            <img src="{{ person_image }}" alt="Image of {{ person_name }}">
                                         {% else %}
-                                        <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
+                                            <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
                                         {% endif %}
                                     </div>
                                     <div class="team__member-details">
                                         <h3>{{ person_name }}</h3>
                                         {% if person_institution.size >= 1 %}
-                                        <p>{{ person_institution }}</p>
+                                            <p>{{ person_institution }}</p>
                                         {% endif %}
                                         {% if person_position.size >= 1 %}
-                                        <p>{{ person_position }}</p>
+                                            <p>{{ person_position }}</p>
                                         {% endif %}
-                                        <a class="button" href="{{ item.url }}">Read Bio</a>
+                                        <span class="button">Read Bio</span>
                                     </div>
-                                </div>
+                                </a>
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
                 </div>
+                {% endif %}
+
+                {% if page.authors.external_authors != nil %}
+                    <div class="team__grid inactive" data-team-content="external-authors">
+                        {% for author in page.authors.external_authors %}
+                            <div class="team__member">
+                                <div class="team__member-image">
+                                    <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
+                                </div>
+                                <div class="team__member-details">
+                                    <h3>{{ author.prefix }} {{ author.given }} {{ author.family }} {{author.suffix}}</h3>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if page.authors.consortium_authors != nil %}
+                <div class="team__grid inactive" data-team-content="consortium-authors">
+                    {% for author in page.authors.consortium_authors %}
+                        {% if author.url != nil %}
+                            <a href="{{ author.url }}" target="_blank" rel="noreferrer" class="team__member">
+                                <div class="team__member-image">
+                                    <img class="placeholder-image" src="{{site.baseurl}}/assets/images/accelerate-question-mark.jpeg">
+                                </div>
+                                <div class="team__member-details">
+                                    <h3>{{ author.name }}</h3>
+                                </div>
+                            </a>
+                        {% else %}
+                            <div class="team__member">
+                                <div class="team__member-image">
+                                    <img class="placeholder-image" src="{{site.baseurl}}/assets/images/placeholder.png">
+                                </div>
+                                <div class="team__member-details">
+                                    <h3>{{ author.name }}</h3>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </section>
         {% endif %}
+
+
+
+
 
         {% if page.publications != nil %}
         <section class="block block__related-publications">
