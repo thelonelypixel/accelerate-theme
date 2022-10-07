@@ -132,7 +132,7 @@
                         {% endif %}
 
                         {% if page.authors.external_authors != nil %}
-                            <button {% if page.authors.internal_authors == blank %} class="active" {% endif %} data-team-id="external-authors">External Authors</button>
+                            <button {% if page.authors.internal_authors == nil %} class="active" {% endif %} data-team-id="external-authors">External Authors</button>
                         {% endif %}
                         
                         {% if page.authors.consortium_authors != nil %}
