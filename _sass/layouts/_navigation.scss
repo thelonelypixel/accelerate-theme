@@ -58,7 +58,7 @@ nav.nav-primary {
 			z-index: 10;
 
 			@include bp(tablet) {
-				margin-right: 3rem;
+				margin-right: 2rem;
 			}
 
 			@include bp(desktop) {
@@ -86,7 +86,7 @@ nav.nav-primary {
 				white-space: nowrap;
 
 				@include bp(tablet) {
-					font-size: 2.4rem;
+					font-size: 2rem;
 					line-height: 2.6rem;
 				}
 
