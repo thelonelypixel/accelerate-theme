@@ -140,8 +140,6 @@
                         {% endif %}
                     </div>
 
-                    <h1>test</h1>
-
                     {% if page.authors.internal_authors != nil %}
                         <div class="team__grid" data-team-content="internal-authors">
                             {% for author in page.authors.internal_authors %}
@@ -180,7 +178,7 @@
                     {% endif %}
 
                     {% if page.authors.external_authors != nil %}
-                        <div class="team__grid inactive" data-team-content="external-authors">
+                        <div class="team__grid {% if page.authors.internal_authors != nil %} inactive {% endif %}" data-team-content="external-authors">
                             {% for author in page.authors.external_authors %}
                             <div class="team__member">
                                 <div class="team__member-image">
@@ -195,7 +193,7 @@
                     {% endif %}
 
                     {% if page.authors.consortium_authors != nil %}
-                        <div class="team__grid inactive" data-team-content="consortium-authors">
+                        <div class="team__grid {% if page.authors.internal_authors != nil or page.authors.external_authors != nil %} inactive {% endif %}" data-team-content="consortium-authors">
                             {% for author in page.authors.consortium_authors %}
                                 {% if author.url != nil %}
                                     <a href="{{ author.url }}" target="_blank" rel="noreferrer" class="team__member">
