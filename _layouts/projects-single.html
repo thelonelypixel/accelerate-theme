@@ -93,8 +93,8 @@
                 {% if page.authors.internal_authors != nil %}
                 <div class="team__grid" data-team-content="internal-authors">
                     {% for author in page.authors.internal_authors %}
-                        <h1>test</h1>
                         {% assign authorName = author %}
+                        {{authorName}}
 
                         {% for item in site.team %}
                             {% if item.slug == authorName %}
