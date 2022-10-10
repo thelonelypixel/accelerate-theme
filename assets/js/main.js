@@ -197,7 +197,7 @@ function init() {
         image.onload = function () {
             imageLoaded = true;
         };
-        image.src = "../assets/images/placeholder-old.jpg";
+        image.src = "../assets/images/jj-ying-8bghKxNU1j0-unsplash.jpg";
     }
 
     animate();
