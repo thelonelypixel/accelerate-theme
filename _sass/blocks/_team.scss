@@ -14,13 +14,13 @@
     }
 
     .team__tabs {
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
         display: flex;
         flex-wrap: wrap;
         border-bottom: 1px solid $regular-grey;
 
         @include bp(desktop) {
-            margin-bottom: 8rem;
+            margin-bottom: 5rem;
         }
 
         button {
