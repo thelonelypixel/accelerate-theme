@@ -53,18 +53,12 @@ pagination:
 
         <div class="posts__filter">
             <div>
-                <!-- Update -->
                 <h5>Search</h5>
-                <input placeholder="Search query goes in here" type="text">
+                <form action="/search.html" method="get">
+                    <input type="text" id="search-box" name="query" placeholder="Search query goes in here">
+                </form>
             </div>
             <div>
-                <h5>Filter by category</h5>
-                <select class="news-category-filter" name="">
-                    <option value="*">All</option>
-                    {% for post in site.research limit:8 offset:offset %}
-                    <option value="{{ post.title | replace: " ", "-" | replace: "[", "" | replace: "]", "" | replace: '"', "" | downcase }}">{{ post.title }}</option>
-                    {% endfor %}
-                </select>
             </div>
         </div>
 
