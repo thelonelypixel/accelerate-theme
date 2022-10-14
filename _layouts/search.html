@@ -12,7 +12,7 @@ title: Search
 
 <script>
   window.store = {
-    {% for post in site.posts %}
+    {% for post in site.posts and site.news %}
       "{{ post.url | slugify }}": {
         "title": "{{ post.title | xml_escape }}",
         "url": "{{ post.url | xml_escape }}"
