@@ -7,9 +7,9 @@ APP STYLES
 
 */
 
-.error404, .search {
+.error404 {
     main {
-        min-height: calc(100vh - 410px); // offset by header and footer height combined
+        min-height: 100vh; // offset by header and footer height combined
         display: flex;
         align-items: center;
         justify-content: center;
@@ -21,11 +21,5 @@ APP STYLES
                 font-size: 8rem;
             }
         }
-    }
-}
-
-.search {
-    article {
-        text-align: left;
     }
 }
