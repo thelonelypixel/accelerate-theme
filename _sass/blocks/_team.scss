@@ -5,6 +5,14 @@
         margin: 10rem 0 4rem 0;
     }
 
+    .section-heading {
+        margin-bottom: 3rem;
+
+        @include bp(desktop) {
+            margin-bottom: 5rem;
+        }
+    }
+
     .team__tabs {
         margin-bottom: 4rem;
         display: flex;
