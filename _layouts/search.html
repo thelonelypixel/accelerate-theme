@@ -18,7 +18,7 @@ title: Search
         "url": "{{ post.url | xml_escape }}"
       }
       {% unless forloop.last %},{% endunless %}
-    {% endfor %}
+    {% endfor %},
     {% for post in site.news %}
       "{{ post.url | slugify }}": {
         "title": "{{ post.title | xml_escape }}",
