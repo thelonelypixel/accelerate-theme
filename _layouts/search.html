@@ -19,13 +19,62 @@ title: Search
       }
       {% unless forloop.last %},{% endunless %}
     {% endfor %},
+
     {% for post in site.news %}
       "{{ post.url | slugify }}": {
         "title": "{{ post.title | xml_escape }}",
           "url": "{{ post.url | xml_escape }}"
       }
       {% unless forloop.last %}, {% endunless %}
-      {% endfor %}
+    {% endfor %},
+
+    {% for post in site.projects %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+          "url": "{{ post.url | xml_escape }}"
+      }
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %},
+
+    {% for post in site.resources %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+          "url": "{{ post.url | xml_escape }}"
+      }
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %},
+
+    {% for post in site.publications %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+          "url": "{{ post.url | xml_escape }}"
+      }
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %},
+
+    {% for post in site.team %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+          "url": "{{ post.url | xml_escape }}"
+      }
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %},
+
+    {% for post in site.opportunities %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+          "url": "{{ post.url | xml_escape }}"
+      }
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %},
+
+    {% for post in site.events %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+          "url": "{{ post.url | xml_escape }}"
+      }
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %},
   };
 </script>
 <script type="text/javascript" src="{{site.baseurl}}/assets/js/lunr.min.js"></script>
