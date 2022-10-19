@@ -63,7 +63,8 @@ pagination:
         </div>
 
         <div class="posts__grid post__grid">
-            {% assign sortedPosts = site.news | sort: 'date' %}
+            <h1>test</h1>
+            {% assign sortedPosts = site.news | sort: 'date' | reverse %}
             {% assign counter = 1 %}
 
             {% for post in sortedPosts %}
