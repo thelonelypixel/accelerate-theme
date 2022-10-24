@@ -477,6 +477,37 @@ function resizeCanvas(canvas) {
                  *
                  */
 
+                // Load More Button - Non Ajax
+                $('.loadMore--alt').click(function () {
+                    let grid = $(this).closest('.block__posts').find('.posts__grid');
+                    let items = $(grid).find('.hidden');
+
+                    if ($(items).length) {
+                        let i;
+                        for (i = 0; i <= 7; i++) {
+                            if (items[i] == null) {
+                                $(this).closest('.posts__load-more').remove();
+                                break;
+                            } else {
+                                $(items[i]).removeClass('hidden');
+                            }
+                        };
+                    } else {
+                        $(this).closest('.posts__load-more').remove();
+                    };
+                });
+
+                // Homepage News Load More Toggle
+                $('.loadMore--toggle').click(function () {
+                    if ($(this).hasClass('open')) {
+                        $(this).removeClass('open');
+                        $(this).closest('.latest__insights').find('.post__post.visible').removeClass('visible').addClass('hidden');
+                    } else {
+                        $(this).addClass('open');
+                        $(this).closest('.latest__insights').find('.post__post.hidden').removeClass('hidden').addClass('visible');
+                    };
+                });
+
                 // Accordions
                 $('.accordions__selectors button').click(function () {
                     var id = $(this).data('accordion-id');
