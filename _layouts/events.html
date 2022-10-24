@@ -20,18 +20,9 @@ title: Events
     </div>
 </section>
 
-{% assign currentDate = 'now' | date: '%Y%m%d' %}
-{% for item in site.events %}
-{% assign eventEndDate = item.end | date: '%Y%m%d' %}
-{% if currentDate <= eventEndDate %}
-{% assign eventsCheck = true %}
-{% endif %}
-{% endfor %}
-
 <section class="block block__posts">
     <div class="container">
 
-        {% if eventsCheck == true %}
         {% assign currentDate = 'now' | date: '%Y%m%d' %}
         {% assign events = site.events | sort: "start" %}
 
@@ -64,8 +55,5 @@ title: Events
             {% endif %}
             {% endfor %}
         </div>
-        {% else %}
-        <h2>Apologies, there are no upcoming events.</h2>
-        {% endif %}
     </div>
 </section>
