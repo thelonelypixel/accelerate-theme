@@ -51,7 +51,7 @@ collections:
 # Build settings
 plugins:
   - jekyll-feed
-  - jekyll-paginate-v2
+  - jekyll-paginate
 sass:
   sass_dir: _sass
 
