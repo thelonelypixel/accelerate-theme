@@ -26,7 +26,7 @@ pagination:
 <section class="block block__posts">
     <div class="container">
         <div class="posts__list post__list">
-            {% for post in site.publications | reversed %}
+            {% for post in site.publications | reverse %}
                 <a class="post__post post__post--publication" href="{{ post.url }}">
                     <div class="post__post-content">
                         <h3>{{ post.title}}</h3>
