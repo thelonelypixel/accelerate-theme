@@ -290,6 +290,12 @@ main { margin-top: 54px; }
 
 @media (min-width: 1200px) { .margin-bottom { margin-bottom: 7rem; } }
 
+img[src*='#left'] { float: left; margin-right: 20px; }
+
+img[src*='#right'] { float: right; margin-left: 20px; }
+
+img[src*='#center'] { display: block; margin: auto; }
+
 h1, h2, h3, h4, h5, h6 { font-family: "DM Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.2; margin-bottom: 1.5; margin-top: 0; font-weight: 400; color: #031927; }
 
 h5, h6 { margin-bottom: 1rem; }
